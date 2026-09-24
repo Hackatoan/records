@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const panel = card.querySelector('.lyrics-panel');
       const isOpen = panel.classList.toggle('open');
       btn.classList.toggle('open', isOpen);
+      btn.setAttribute('aria-expanded', String(isOpen));
       btn.innerHTML = isOpen
         ? '&#9660; Lyrics'
         : '&#9654; Lyrics';
