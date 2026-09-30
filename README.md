@@ -1,20 +1,16 @@
 # records
 
-Self-hosted audio hosting for hackatoa.com.
+A personal music collection page — static HTML audio player for original songs, with lyrics and album art.
 
 ☕ **Support:** [Buy Me a Coffee](https://buymeacoffee.com/hackatoa)
 
-## Status
-
-**Archived** — audio is now served directly to hackatoa.com's players from this host.
-
 ## Overview
 
-An nginx service that serves published audio (releases + Wayback archive) with CORS and range support, replacing the earlier raw.githubusercontent.com hosting.
+A single static page listing songs with cover art, an inline audio player per track, and a toggleable lyrics panel. Audio files are served directly from this repo (organized into folders like `Trial 1/` and `Wayback Machine/`).
 
 ## Tech Stack
 
-nginx · Docker
+HTML · CSS · vanilla JS
 
 ## Support
 
