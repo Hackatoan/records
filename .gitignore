@@ -1,0 +1,12 @@
+# Audio files not referenced in the HTML
+# These are kept in the repo for archival purposes but should not be deployed
+
+# Unreferenced songs in Trial 1 that aren't displayed on the player
+Trial\ 1/Half\ Asleep.mp3
+Trial\ 1/Pocket\ Reset.mp3
+Trial\ 1/Rain\ On\ Glass.mp3
+Trial\ 1/Rain\ on\ the\ Blue\ Chair.mp3
+Trial\ 1/Slow\ Scroll.mp3
+
+# Entire Wayback Machine directory is not referenced in index.html
+Wayback\ Machine/
