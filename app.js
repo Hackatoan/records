@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Cache audio elements once at load to avoid repeated DOM queries
+  const audioElements = document.querySelectorAll('audio');
+  let currentlyPlaying = null;
+
   // Toggle lyrics panel
   document.querySelectorAll('.btn-lyrics').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -14,24 +18,28 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Highlight active song when its audio plays
-  document.querySelectorAll('audio').forEach((audio) => {
+  audioElements.forEach((audio) => {
     audio.addEventListener('play', () => {
-      // Pause all other audio elements
-      document.querySelectorAll('audio').forEach((other) => {
-        if (other !== audio) {
-          other.pause();
-          other.closest('.song-card').classList.remove('active');
-        }
-      });
+      // Pause previously playing audio instead of querying all
+      if (currentlyPlaying && currentlyPlaying !== audio) {
+        currentlyPlaying.pause();
+        currentlyPlaying.closest('.song-card').classList.remove('active');
+      }
+      currentlyPlaying = audio;
       audio.closest('.song-card').classList.add('active');
     });
 
     audio.addEventListener('pause', () => {
-      audio.closest('.song-card').classList.remove('active');
+      if (currentlyPlaying === audio) {
+        audio.closest('.song-card').classList.remove('active');
+      }
     });
 
     audio.addEventListener('ended', () => {
-      audio.closest('.song-card').classList.remove('active');
+      if (currentlyPlaying === audio) {
+        currentlyPlaying = null;
+        audio.closest('.song-card').classList.remove('active');
+      }
     });
   });
 });
