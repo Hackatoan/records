@@ -8,9 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       const card = btn.closest('.song-card');
       const panel = card.querySelector('.lyrics-panel');
+      const songTitle = card.querySelector('.song-title').textContent;
       const isOpen = panel.classList.toggle('open');
       btn.classList.toggle('open', isOpen);
       btn.setAttribute('aria-expanded', String(isOpen));
+      btn.setAttribute('aria-label', isOpen ? `Hide lyrics for ${songTitle}` : `Show lyrics for ${songTitle}`);
       btn.innerHTML = isOpen
         ? '&#9660; Lyrics'
         : '&#9654; Lyrics';
